@@ -25,6 +25,8 @@ type StateManager interface {
 
 // State is a game state
 type State interface {
+	OnEnter() error
+	OnExit() error
 	Draw(screen *ebiten.Image) error
 	Update() error
 	ID() string
@@ -57,7 +59,14 @@ func (s *stateManager) Add(state State) error {
 
 func (s *stateManager) SetActive(id string) error {
 	if _, ok := s.states[id]; ok {
+
+		if s.currentState != nil {
+			s.currentState.OnExit()
+		}
+
 		s.currentState = s.states[id]
+		s.currentState.OnEnter()
+
 		return nil
 	}
 
