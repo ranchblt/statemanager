@@ -100,12 +100,25 @@ func TestUpdate(t *testing.T) {
 	assert.Equal(t, 1, state.counter)
 }
 
-func TestUpdateNoActive(t *testing.T) {
+func TestDraw(t *testing.T) {
+	stateManager := New()
+	state := newTestState("test")
+	stateManager.Add(state)
+	stateManager.SetActive(state.ID())
+
+	err := stateManager.Draw(&ebiten.Image{})
+	assert.Nil(t, err)
+}
+
+func TestNoActive(t *testing.T) {
 	stateManager := New()
 	state := newTestState("test")
 	stateManager.Add(state)
 
 	err := stateManager.Update()
+	assert.NotNil(t, err)
+
+	err = stateManager.Draw(&ebiten.Image{})
 	assert.NotNil(t, err)
 }
 
