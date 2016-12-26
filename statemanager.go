@@ -82,6 +82,10 @@ func (s *stateManager) Update() error {
 }
 
 func (s *stateManager) Draw(screen *ebiten.Image) error {
+	if s.currentState == nil {
+		return errors.New("No active state set")
+	}
+
 	return s.currentState.Draw(screen)
 }
 
