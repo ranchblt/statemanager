@@ -1,4 +1,4 @@
-# StateManager [![GoDoc](https://godoc.org/github.com/ranchblt/statemanager?status.svg)](https://godoc.org/github.com/ranchblt/statemanager)
+# StateManager [![GoDoc](https://godoc.org/github.com/ranchblt/statemanager?status.svg)](https://godoc.org/github.com/ranchblt/statemanager) [![Go Report Card](https://goreportcard.com/badge/github.com/ranchblt/statemanager)](https://goreportcard.com/report/github.com/ranchblt/statemanager)
 StateManager is simple state management for ebiten games
 
 ## Documentation
